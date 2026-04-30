@@ -505,20 +505,24 @@ async def _click_and_extract_description(page: Page) -> str:
 
 async def _make_browser_context(playwright):
     import platform
+    is_linux = platform.system() == "Linux"
     args = [
         "--disable-blink-features=AutomationControlled",
         "--no-sandbox",
         "--window-size=1280,720",
     ]
-    if platform.system() == "Linux":
+    if is_linux:
         args += [
             "--disable-setuid-sandbox",
             "--disable-dev-shm-usage",
-            "--disable-gpu",
-            "--no-zygote",
-            "--disable-software-rasterizer",
         ]
-    browser = await playwright.chromium.launch(headless=True, args=args)
+        try:
+            from pyvirtualdisplay import Display
+            display = Display(visible=False, size=(1280, 720))
+            display.start()
+        except Exception:
+            pass
+    browser = await playwright.chromium.launch(headless=False, args=args)
     context = await browser.new_context(
         viewport={"width": 1280, "height": 720},
         user_agent=(

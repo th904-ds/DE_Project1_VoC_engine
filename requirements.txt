@@ -1,4 +1,5 @@
 streamlit>=1.28
+pyvirtualdisplay>=3.0
 playwright>=1.40
 playwright-stealth>=1.0
 pymongo>=4.0
