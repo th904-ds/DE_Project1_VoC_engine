@@ -14,3 +14,14 @@ libxfixes3
 libxrandr2
 libgbm1
 libasound2t64
+libcairo2
+libpango-1.0-0t64
+libpangocairo-1.0-0t64
+libgtk-3-0t64
+libx11-6
+libxcb1
+libxext6
+libxss1
+libexpat1
+libfontconfig1
+libfreetype6
