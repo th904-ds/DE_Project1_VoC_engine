@@ -1159,9 +1159,9 @@ def render_analysis_page() -> None:
         }
         styled = (
             tdf.style
-            .applymap(_style_pos, subset=["긍정(%)"])
-            .applymap(_style_neg, subset=["부정(%)"])
-            .applymap(_style_judgment, subset=["판단"])
+            .map(_style_pos, subset=["긍정(%)"])
+            .map(_style_neg, subset=["부정(%)"])
+            .map(_style_judgment, subset=["판단"])
             .format(fmt)
         )
         st.dataframe(styled, use_container_width=True, hide_index=True)
