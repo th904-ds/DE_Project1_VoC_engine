@@ -29,7 +29,7 @@ load_dotenv()
 @st.cache_resource(show_spinner=False)
 def _install_playwright_browsers():
     import subprocess
-    subprocess.run(["playwright", "install", "chromium"], check=False)
+    subprocess.run(["playwright", "install", "chromium", "--with-deps"], check=False)
 
 _install_playwright_browsers()
 
