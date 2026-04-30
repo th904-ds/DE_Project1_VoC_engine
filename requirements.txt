@@ -1,5 +1,6 @@
 streamlit>=1.28
 playwright>=1.40
+playwright-stealth>=1.0
 pymongo>=4.0
 python-dotenv>=1.0
 pandas>=2.0

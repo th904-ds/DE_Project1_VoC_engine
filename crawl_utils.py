@@ -513,7 +513,7 @@ async def _make_browser_context(playwright):
             "--disable-dev-shm-usage",
             "--disable-gpu",
             "--no-zygote",
-            "--single-process",
+            "--disable-software-rasterizer",
             "--window-size=1280,720",
         ],
     )
