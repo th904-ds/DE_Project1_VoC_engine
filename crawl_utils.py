@@ -516,12 +516,6 @@ async def _make_browser_context(playwright):
             "--disable-setuid-sandbox",
             "--disable-dev-shm-usage",
         ]
-        try:
-            from pyvirtualdisplay import Display
-            display = Display(visible=False, size=(1280, 720))
-            display.start()
-        except Exception:
-            pass
     browser = await playwright.chromium.launch(headless=False, args=args)
     context = await browser.new_context(
         viewport={"width": 1280, "height": 720},

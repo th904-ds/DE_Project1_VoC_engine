@@ -24,15 +24,26 @@ from task6_absa import SentimentRunner
 
 load_dotenv()
 
-# ── Playwright 브라우저 설치 (클라우드 배포 환경 대응) ─────────────────────────
+# ── Playwright 브라우저 설치 + 가상 디스플레이 (클라우드 배포 환경 대응) ────────
 
 @st.cache_resource(show_spinner=False)
 def _install_playwright_browsers():
-    import subprocess, sys
+    import subprocess, sys, platform, os, time
     subprocess.run(
         [sys.executable, "-m", "playwright", "install", "chromium"],
         check=False,
     )
+    if platform.system() == "Linux":
+        try:
+            subprocess.Popen(
+                ["Xvfb", ":99", "-screen", "0", "1280x720x24", "-ac"],
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+            )
+            time.sleep(1)
+            os.environ["DISPLAY"] = ":99"
+        except Exception:
+            pass
 
 _install_playwright_browsers()
 
