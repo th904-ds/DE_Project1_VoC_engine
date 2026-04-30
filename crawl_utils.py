@@ -509,11 +509,16 @@ async def _make_browser_context(playwright):
         args=[
             "--disable-blink-features=AutomationControlled",
             "--no-sandbox",
-            "--window-size=1920,1080",
+            "--disable-setuid-sandbox",
+            "--disable-dev-shm-usage",
+            "--disable-gpu",
+            "--no-zygote",
+            "--single-process",
+            "--window-size=1280,720",
         ],
     )
     context = await browser.new_context(
-        viewport={"width": 1920, "height": 1080},
+        viewport={"width": 1280, "height": 720},
         user_agent=(
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
             "AppleWebKit/537.36 (KHTML, like Gecko) "
