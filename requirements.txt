@@ -1,0 +1,9 @@
+streamlit>=1.28
+playwright>=1.40
+pymongo>=4.0
+python-dotenv>=1.0
+pandas>=2.0
+plotly>=5.0
+transformers>=4.35
+torch>=2.6
+sentencepiece>=0.2

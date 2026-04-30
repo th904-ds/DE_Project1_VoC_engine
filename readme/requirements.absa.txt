@@ -1,0 +1,11 @@
+# Task 6 ABSA 실행 의존성
+# 주의: torch는 2.6 이상 필요 (CVE-2025-32434 대응으로 구버전에서 일부 모델 로드 차단)
+# torch는 플랫폼별로 별도 설치 권장:
+#   CPU: pip install --index-url https://download.pytorch.org/whl/cpu "torch>=2.6"
+#   GPU: pip install torch --index-url https://download.pytorch.org/whl/cu118
+
+torch>=2.6
+transformers>=5.0
+sentencepiece>=0.2
+pymongo>=4.0
+python-dotenv>=1.0
