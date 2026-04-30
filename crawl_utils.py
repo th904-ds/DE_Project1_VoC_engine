@@ -504,19 +504,21 @@ async def _click_and_extract_description(page: Page) -> str:
 # ── 브라우저 컨텍스트 ─────────────────────────────────────────────────────────
 
 async def _make_browser_context(playwright):
-    browser = await playwright.chromium.launch(
-        headless=True,
-        args=[
-            "--disable-blink-features=AutomationControlled",
-            "--no-sandbox",
+    import platform
+    args = [
+        "--disable-blink-features=AutomationControlled",
+        "--no-sandbox",
+        "--window-size=1280,720",
+    ]
+    if platform.system() == "Linux":
+        args += [
             "--disable-setuid-sandbox",
             "--disable-dev-shm-usage",
             "--disable-gpu",
             "--no-zygote",
             "--disable-software-rasterizer",
-            "--window-size=1280,720",
-        ],
-    )
+        ]
+    browser = await playwright.chromium.launch(headless=True, args=args)
     context = await browser.new_context(
         viewport={"width": 1280, "height": 720},
         user_agent=(
